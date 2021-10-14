@@ -6,16 +6,24 @@
 void ejercicio1();
 void ejercicio2apartado1();
 void ejercicio2apartado2();
+void ejercicio2apartado3();
+void ejercicio2apartado4();
 void showArray(double* array, int arraySize);
 void showArrayText(double* array, int arraySize);
 double map(double original);
 
 int main() {
 	
+	printf("\n\nEjercicio 1\n");
 	ejercicio1();
+	printf("\n\nEjercicio 2:1 \n");
 	ejercicio2apartado1();
+	printf("\n\nEjercicio 2:2 \n");
 	ejercicio2apartado2();
-
+	printf("\n\nEjercicio 2:3 \n");
+	ejercicio2apartado3();
+	printf("\n\nEjercicio 2:4 \n");
+	ejercicio2apartado4();
 
 	return 0;
 }
@@ -48,6 +56,29 @@ void ejercicio2apartado2() {
 		vN[i] = map(vN[i]);
 	}
 	showArrayText(vN, 11);
+}
+
+void ejercicio2apartado3() {
+	//double birthdate[8] = { 0.0, 9.0, 0.0, 8.0, 2.0, 0.0, 0.0, 0.0 };
+	double birthdate[8] = { 1.0, 0.0, 0.0, 9.0, 2.0, 0.0, 0.0, 0.0 };
+	showArray(birthdate, 8);
+	double norm2 = cblas_dnrm2(8, birthdate, 1);
+	printf("Norma2: %lf \n", norm2);
+	int mod11 = (int) norm2 % 11;
+	printf("Nota de MNC: %d \n", mod11);
+}
+
+void ejercicio2apartado4() {
+	//double birthdate[8] = { 0.0, 9.0, 0.0, 8.0, 2.0, 0.0, 0.0, 0.0 };
+	double birthdate[8] = { 1.0, 0.0, 0.0, 9.0, 2.0, 0.0, 0.0, 0.0 };
+	showArray(birthdate, 8);
+	// El incremento se podría usar para hacer operaciones matriciales usando solamente BLAS nivel 1.
+	for (int i = 0; i < 5; i++) {
+		double norm2 = cblas_dnrm2(8, birthdate, i);
+		printf("Norma2: %lf \n", norm2);
+		int mod11 = (int)norm2 % 11;
+		printf("Nota de MNC con incremento %d: %d \n", i, mod11);
+	}
 }
 
 void showArray(double* array, int arraySize) {
