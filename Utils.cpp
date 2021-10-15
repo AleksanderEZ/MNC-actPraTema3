@@ -31,3 +31,9 @@ void showArrayText(double* array, int arraySize) {
 double map(double original) {
 	return 97 + (122 - 97) * (original / 461);
 }
+
+void resetMatrix(double* matrix, int size) {
+	for (int i = 0; i < size; i++) {
+		matrix[i] = 0;
+	}
+}

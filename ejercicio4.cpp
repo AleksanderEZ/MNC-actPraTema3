@@ -6,58 +6,27 @@
 #include "ejercicio4.h"
 
 void ejercicio4apartado1() {
-	double A[3 * 3] = { 1,2,3,4,5,6,7,8,9 };
-	double x[3] = { 1.0, 10.0, 100.0 };
-	double y[3] = { 200.0, 20.0, 2.0 };
-	double z[3] = { 0.0, 0.0, 0.0 };
+	double A[9] = { 0, 1, 0, 1, 1, 0, 0, 0, 0 };
+	double B[9] = { 3, 7, 29, 5, 1, 0, 24, 97, 2 };
+	double C[9] = { 1, 13, 17, 19, 37, 71, 11, 5, 2};
+	double resultado[9];
+	
+	cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, 3, 3, 3, 1, A, 3, B, 3, 0, resultado, 3);
+	showMatrix(resultado, 3, 3);
 
-	showMatrix(A, 3, 3);
-	cblas_dgemv(CblasRowMajor, CblasNoTrans, 3, 3, 1, A, 3, x, 1, 1, z, 1);
-	showArray(x, 3);
+	resetMatrix(resultado, 9);
+	cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasTrans, 3, 3, 3, 1, A, 3, B, 3, 0, resultado, 3);
+	showMatrix(resultado, 3, 3);
 
-	printf("a) ");
-	showArray(z, 3);
-
-	printf("b) ");
-	cblas_dgemv(CblasRowMajor, CblasNoTrans, 3, 3, 3, A, 3, x, 1, 4, y, 1);
-
-	showArray(y, 3);
+	cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, 3, 3, 3, 2, A, 3, B, 3, 3, C, 3);
+	showMatrix(C, 3, 3);
 }
 
 void ejercicio4apartado2() {
-	double A[3 * 3] = { 1,2,3,4,5,6,7,8,9 };
-	double x[3] = { 1.0, 10.0, 100.0 };
-	double y[3] = { 200.0, 20.0, 2.0 };
-	double z[3] = { 0.0, 0.0, 0.0 };
+	double A[5] = { 1,2,3,4,5 };
+	double B[5] = { 2,1,65,12,98 };
+	double result[25];
 
-	showMatrix(A, 3, 3);
-	cblas_dgemv(CblasRowMajor, CblasNoTrans, 3, 3, 1, A, 3, x, 1, 1, z, 1);
-	showArray(x, 3);
-
-	printf("a) ");
-	showArray(z, 3);
-
-	printf("b) ");
-	cblas_dgemv(CblasRowMajor, CblasNoTrans, 3, 3, 3, A, 3, x, 1, 4, y, 1);
-
-	showArray(y, 3);
-}
-
-void ejercicio4apartado3() {
-	double A[3 * 3] = { 1,2,3,4,5,6,7,8,9 };
-	double x[3] = { 1.0, 10.0, 100.0 };
-	double y[3] = { 200.0, 20.0, 2.0 };
-	double z[3] = { 0.0, 0.0, 0.0 };
-
-	showMatrix(A, 3, 3);
-	cblas_dgemv(CblasRowMajor, CblasNoTrans, 3, 3, 1, A, 3, x, 1, 1, z, 1);
-	showArray(x, 3);
-
-	printf("a) ");
-	showArray(z, 3);
-
-	printf("b) ");
-	cblas_dgemv(CblasRowMajor, CblasNoTrans, 3, 3, 3, A, 3, x, 1, 4, y, 1);
-
-	showArray(y, 3);
+	cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, 5, 5, 1, 1, A, 1, B, 5, 0, result, 5);
+	showMatrix(result, 5, 5);
 }
