@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="ejercicio1y2.cpp" />
     <ClCompile Include="ejercicio3.cpp" />
+    <ClCompile Include="ejercicio5.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ejercicio4.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="ejercicio1y2.h" />
     <ClInclude Include="ejercicio3.h" />
     <ClInclude Include="ejercicio4.h" />
+    <ClInclude Include="ejercicio5.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

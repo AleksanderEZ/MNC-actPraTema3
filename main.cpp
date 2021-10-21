@@ -2,6 +2,7 @@
 #include "ejercicio1y2.h"
 #include "ejercicio3.h"
 #include "ejercicio4.h"
+#include "ejercicio5.h"
 
 int main() {
 
@@ -23,10 +24,20 @@ int main() {
 	printf("\n\nEjercicio 3:3 \n");
 	ejercicio3apartado3();*/
 
-	printf("\n\nEjercicio 4:1 \n");
+	/*printf("\n\nEjercicio 4:1 \n");
 	ejercicio4apartado1();
 	printf("\n\nEjercicio 4:2 \n");
-	ejercicio4apartado2();
+	ejercicio4apartado2();*/
+
+	printf("\n\nEjercicio 5:1 \n");
+	printf("\n\nEjercicio 5:2 \n");
+	ejercicio5apartado2();
+	printf("\n\nEjercicio 5:3 \n");
+	ejercicio5apartado3();
+	printf("\n\nEjercicio 5:4 \n");
+	ejercicio5apartado4();
+	printf("\n\nEjercicio 5:5 \n");
+	ejercicio5apartado5();
 
 
 	return 0;
