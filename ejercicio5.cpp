@@ -7,11 +7,11 @@
 #include "Utils.h"
 #include "ejercicio5.h"
 
-int referenceValues[] = { 2,3,4,5,10,20,50,100,200,1000 };
+int referenceValues[] = { 500 };
 
 double** ejercicio5apartado1(int n) {
-	
-	
+
+
 	double* A = generateRandomMatrixDouble(n);
 
 	double* B = generateRandomMatrixDouble(n);
@@ -19,34 +19,39 @@ double** ejercicio5apartado1(int n) {
 	double* C = generateRandomMatrixDouble(n);
 
 
-	double* arrayxd[3]  = { A, B, C };
+	double* arrayxd[3] = { A, B, C };
 	return arrayxd;
 }
 void ejercicio5apartado2() {
-	srand((unsigned int)time(NULL));
-	double fin, inicio = dsecnd();
-	for (int index = 0; index < 10; index++) {
-		double** arrayxd = ejercicio5apartado1(referenceValues[index]);
-		double* A = arrayxd[0];
-		double* B = arrayxd[1];
-		double* C = arrayxd[2];
-		inicio = dsecnd();
-		for (int iterations = 0; iterations < 100; iterations++)
+	long long int n[6] = {1, 10, 100, 1000, 2000, 5000 };
+
+	srand((unsigned int) 1);
+
+	for (int i = 0; i < 6; i++)
+	{
+		double fin, inicio = dsecnd();
+		for (int j = 0; j < 100; j++)
 		{
-			cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, 
-				referenceValues[index], referenceValues[index], referenceValues[index], 
-				1, A, referenceValues[index], B, referenceValues[index], 0, C, referenceValues[index]);
+			double* A = generateRandomMatrixDouble(n[i]);
+			double* B = generateRandomMatrixDouble(n[i]);
+			double* C = generateRandomMatrixDouble(n[i]);
+
+			cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
+				n[i], n[i], n[i],
+				1, A, n[i], B, n[i], 0, C, n[i]);
+
+			mkl_free(A); // free memory
+			mkl_free(B); // free memory
+			mkl_free(C); // free memory
 		}
 		fin = dsecnd();
-		mkl_free(A); // free memory
-		mkl_free(B);
-		mkl_free(C);
-		printf("GFLOPS para N = %d: %lf\n", referenceValues[index], (1/((fin - inicio) / 100))/1.0e9);
+		double t = (fin - inicio) / 100;
+		double nCubo = n[i] * n[i] * n[i];
+		printf("GFLOPS para N = %lld: %lf\n", n[i],
+			(1 / (t / nCubo)) / 1.0e9);
 	}
-	
-
-	
 }
+
 void ejercicio5apartado3() {}
 void ejercicio5apartado4() {}
 void ejercicio5apartado5() {}
